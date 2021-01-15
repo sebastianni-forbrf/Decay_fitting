@@ -28,15 +28,15 @@ if __name__ == '__main__':
         # Load data parameters
         ###############################################################################  
         'load_data' : True,    # Load some data 
-        'hdf': True,
+        'hdf': True,            # If file is saved as HDF
         'min_length': 250,      # Minimum data length to analyse
         'interpolate': False,    # Shorten or lengthen the data
         'inter_points': 1000,    # Number of interpolated data points
         'temp_data' : False,     # Temperature data
         'wind_data': False,      # Osciliscope window data
-        'check_data': True,
-        'data_length_cut':200,
-        'background_data': False,
+        'check_data': True,     # Simple data check
+        'data_length_cut':200,  # Remove data sets shorter then this number
+        'background_data': False,   #Background data
         'background_data_dir': '/home/sebastian/OneDrive/Research/Decay_Signals/Calibration_data/Data/LED_Study/signal_of_10_mV/Background_data',
         'load_data_dir' : '/home/sebastian/OneDrive/Research/Decay_Signals/Calibration_data/Data/LED_Study',
         ###############################################################################
@@ -120,9 +120,10 @@ if __name__ == '__main__':
         'img_format': 'jpg' # Image format to save the figures in.
     }
 
+    ##Read singular file
+    #fit_exp.fit_data(fit_dict)
 
-    # if not os.path.exists(fit_dict['save_data_dir']):
-    #     os.makedirs(fit_dict['save_data_dir'])
+    ##Read Several Files
     curr_pos = fit_dict['current_pos']
     base = fit_dict['load_data_dir']
     for dir1 in tqdm.tqdm(os.scandir(base)):

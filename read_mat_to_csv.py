@@ -126,6 +126,7 @@ if __name__ == '__main__':
         'dt_data': True,
         'save_data_dir':'/home/sebastian/OneDrive/Research/Decay_Signals/Calibration_data/Data/MFG_data'
     }
+    ## Read Several files
     # for dir in os.walk(fit_dict['load_data_dir']):
     #     print(dir[0] )
     # base = fit_dict['load_data_dir']
@@ -135,4 +136,6 @@ if __name__ == '__main__':
     #         fit_dict['load_data_dir'] = dir2.path+str('/data_kHz.mat')
     #         print('\n'+fit_dict['load_data_dir']+'\n')
     #         convert_matlab_to_csv(fit_dict)
+
+    ## Read Singular file
     convert_matlab_to_csv(fit_dict)
