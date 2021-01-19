@@ -1100,6 +1100,9 @@ def fit_data(fit_dict):
             
         amp_fit_data['max_idx'] = temp_max_idx_arr
         amp_fit_data['intensity_max'] = temp_max_val_arr
+        tau_fit_data['max_idx'] = temp_max_idx_arr
+        tau_fit_data['intensity_max'] = temp_max_val_arr
+
         try:
             amp_fit_data = amp_fit_data.drop(['Unnamed: 0'],axis = 1)
             tau_fit_data= tau_fit_data.drop(['Unnamed: 0'],axis = 1)
@@ -1475,7 +1478,7 @@ def fit_data(fit_dict):
         plt.savefig(fit_dict['save_data_dir'] + '/Decay_times_norm.'+ fit_dict['img_format'],format = fit_dict['img_format'])
         
         if fit_dict['loss_metric'] == 2 or fit_dict['loss_metric'] == 3:
-            # Plotting all the normalised C:s
+            
             c_plot_fig = plt.figure()
             ax_c_plot_fig = c_plot_fig.add_subplot(111)
             ax_c_plot_fig.grid(b=True, which='major', color='#666666', linestyle='-',alpha = 0.8)
@@ -1489,7 +1492,7 @@ def fit_data(fit_dict):
             plt.legend()
             plt.savefig(fit_dict['save_data_dir'] + '/Decay_times_norm_std.'+ fit_dict['img_format'],format = fit_dict['img_format'])
 
-            # Plotting all the normalised C:s
+            
             c_plot_fig = plt.figure()
             ax_c_plot_fig = c_plot_fig.add_subplot(111)
             ax_c_plot_fig.grid(b=True, which='major', color='#666666', linestyle='-',alpha = 0.8)
@@ -1503,7 +1506,7 @@ def fit_data(fit_dict):
             plt.legend()
             plt.savefig(fit_dict['save_data_dir'] + '/Decay_times_normcoef.'+ fit_dict['img_format'],format = fit_dict['img_format'])
 
-        # Plotting all the normalised C:s
+        
         c_plot_fig = plt.figure()
         ax_c_plot_fig = c_plot_fig.add_subplot(111)
         ax_c_plot_fig.grid(b=True, which='major', color='#666666', linestyle='-',alpha = 0.8)
@@ -1531,6 +1534,21 @@ def fit_data(fit_dict):
         ax_amp_plot_fig.set_ylabel('Amplitude [a.u]')
         plt.legend()
         plt.savefig(fit_dict['save_data_dir'] + '/norm_amplitudes.'+ fit_dict['img_format'],format = fit_dict['img_format'])
+
+        # Plot real amplitudes 
+        real_amp_fig = plt.figure()
+        ax_real_amp_fig = real_amp_fig.add_subplot(111)
+        ax_real_amp_fig.grid(b=True, which='major', color='#666666', linestyle='-',alpha = 0.8)
+        ax_real_amp_fig.minorticks_on()
+        ax_real_amp_fig.grid(b=True, which='minor', color='#999999', linestyle='-', alpha=0.2)
+        ax_real_amp_fig.scatter(np.arange(len(tau_fit_data['tau_final'])),tau_fit_data['intensity_max'],alpha = 0.5, s = 5,marker ='v',c = 'k',label ='Max amplitude')
+        ax_real_amp_fig.scatter(np.arange(len(tau_fit_data['tau_final'])),tau_fit_data['intensity_start'],alpha = 0.5, s = 5,marker ='.',c = 'k',label ='Tau Fit Amplitude')
+        ax_real_amp_fig.scatter(np.arange(len(amp_fit_data['tau_final'])),amp_fit_data['intensity_start'],alpha = 0.5, s = 5,marker ='.',c= '0.5',label = 'Amp Fit Amplitude')
+        plt.title('Max signal value')
+        ax_real_amp_fig.set_xlabel('Waveform')
+        ax_real_amp_fig.set_ylabel('Voltage [V]')
+        plt.legend()
+        plt.savefig(fit_dict['save_data_dir'] + '/amplitudes.'+ fit_dict['img_format'],format = fit_dict['img_format'])    
 
         # Plotting all the normalised reduced residuals
         chi_plot_fig = plt.figure()
