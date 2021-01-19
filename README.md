@@ -1,5 +1,6 @@
 # Decay fitting
 The scripts in this GitHub is used to analyse decay data from phosphor data.
+In the example data folder there is a data_kHz.mat file that can be used as a test file which the read_mat_to_csv.py converts to readble file for the main_decay_fit.py.
 
 # Example usage.
 ## 1. 
