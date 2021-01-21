@@ -97,7 +97,7 @@ if __name__ == '__main__':
         'rough_guess_method': 'nelder',     #Robust solver to get initial guess.
         'rough_guess_nan_policy': 'omit',   # Options: 1:’raise’ : a ValueError is raised 2:’propagate’ : the values returned from userfcn are un-altered 3:’omit’ : non-finite values are filtered
         'rough_guess_reduce_func': None,    # Function to convert a residual array: None = sum of squares of residual, ’negentropy’ : neg entropy, using normal distribution, ’neglogcauchy’: neg log likelihood, using Cauchy distribution
-        'final_guess_method': 'least_squares',    # Options: leastsq. ’leastsq’: Levenberg-Marquardt, ’least_squares’: Trust Region Reflective
+        'final_guess_method': 'leastsq',    # Options: leastsq. ’leastsq’: Levenberg-Marquardt, ’least_squares’: Trust Region Reflective
         'final_guess_nan_policy': 'omit',   # Same as rough guess
         'final_guess_reduce_func': None,    # Same as rough guess
         'num_cores': -1, # Options: -1 will use all availble cores: 1 will use one core, 2 will use 2 etc.. (if more then one core is used data from grid_c1_amp grid_c2_amp fitting will not be availble, only the best paramters are saved)
